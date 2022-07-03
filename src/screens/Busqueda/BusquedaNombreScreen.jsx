@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { ActivityIndicator, Chip, Menu, TextInput, Title, useTheme } from 'react-native-paper';
+import { ActivityIndicator, Chip, Menu, Text, TextInput, Title, useTheme } from 'react-native-paper';
 import FilterButtonGroup, { BUTTON_VALUES } from '../../components/FilterButtonGroup';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { useQuery } from 'react-query';
@@ -109,6 +109,11 @@ function BusquedaNombreScreen({ navigation }) {
       )}
       <View style={{flex: 1}}>
         <ScrollView contentContainerStyle={{paddingVertical: 10}}>
+          {recetas.length === 0 && (
+            <View>
+              <Text style={{textAlign: 'center'}}>Sin resultados 🤔</Text>
+            </View>
+          )}
           {recetas?.map(receta => (
             <RecipeCard
               key={receta.id}
