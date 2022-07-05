@@ -34,12 +34,12 @@ function FavoritosScreen({ navigation }) {
     navigation.navigate('Receta', { recetaId: recipe.id })
   }
 
-  const queryClient = useQueryClient();
-  const { mutate, isLoading } = useMutation(favoritesApi.agregarFavorito, { 
-    onSuccess: () => {
-      queryClient.invalidateQueries(['favorites']);
-    },
-  });
+  // const queryClient = useQueryClient();
+  // const { mutate, isLoading } = useMutation(favoritesApi.agregarFavorito, { 
+  //   onSuccess: () => {
+  //     queryClient.invalidateQueries(['favorites']);
+  //   },
+  // });
 
   function handleFavoritoPress(recipe) {
     mutate ({
