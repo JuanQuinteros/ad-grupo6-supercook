@@ -34,29 +34,21 @@ function FavoritosScreen({ navigation }) {
     navigation.navigate('Receta', { recetaId: recipe.id })
   }
 
-  // const { mutate, isLoading } = useMutation(userApi.patchUser, {
-  //   onSuccess: () => {
-  //     queryClient.invalidateQueries(['user']);
-  //   },
-  // });
+  const queryClient = useQueryClient();
+  const { mutate, isLoading } = useMutation(favoritesApi.agregarFavorito, { 
+    onSuccess: () => {
+      queryClient.invalidateQueries(['favorites']);
+    },
+  });
 
   function handleFavoritoPress(recipe) {
     mutate ({
-      id: recipe.id, 
+      id: recipe.id
       //esFavorito: !recipe.esFavorito
-    });
+    })
   }
 
   return (
-    // <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-    //   <Text style={{fontSize: 30}}>
-    //     En construcción
-    //   </Text>
-    //   <Text style={{fontSize: 30}}>
-    //     🚧
-    //   </Text>
-    // </View>
-
     <HomeLayout
       icon="account-circle-outline"
       title={`Hola ${usuario.nombre}`}
