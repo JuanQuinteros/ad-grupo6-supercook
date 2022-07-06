@@ -20,7 +20,7 @@ function FavoritosScreen({ navigation }) {
   });
 
   function handleIconPress() {
-    navigation.navigate('Perfil');
+    navigation.navigate('PerfilStack', { screen: 'Perfil' });
   }
 
   const { mutate } = useMutation(favoritesApi.agregarFavorito, { // agregar: post_favorito..
@@ -35,7 +35,7 @@ function FavoritosScreen({ navigation }) {
   }
 
   // const queryClient = useQueryClient();
-  // const { mutate, isLoading } = useMutation(favoritesApi.agregarFavorito, { 
+  // const { mutate, isLoading } = useMutation(favoritesApi.agregarFavorito, {
   //   onSuccess: () => {
   //     queryClient.invalidateQueries(['favorites']);
   //   },
